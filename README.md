@@ -6,16 +6,12 @@
 
 - [YouTube Video](https://www.youtube.com/watch?v=PmDJIooZjBE)
 
-- [Original Source Code on GitHub](https://github.com/amantinband/buber-breakfast)
-
-- [Totorial author's GitHub - amantinband](https://github.com/amantinband)
-
 # Error Handling Library
 
 - [ErrorOr](https://github.com/amantinband/error-or) - A simple, fluent discriminated union of an error or a result.
 
 
-# VSCode Extensions
+# VSCode Extensions (similar can be found for VS Community Ed. by Extension Manager)
 
 - [VSCode Rest Client](https://github.com/Huachao/vscode-restclient) - REST Client allows you to send HTTP request and view the response in Visual Studio Code directly.
 
