@@ -18,16 +18,14 @@ namespace BuberBreakfastAPI.Controllers
         [HttpPost]
         public IActionResult CreateBreakfast(CreateBreakfastRequest request)
         {
-            var breakfast = new Breakfast(
-                Guid.NewGuid(),
-                request.Name,
-                request.Description,
-                request.StartDateTime,
-                request.EndDateTime,
-                DateTime.UtcNow,
-                request.Savory,
-                request.Sweet);
+            ErrorOr<Breakfast> requestToBreakfastResult = Breakfast.From(request);
 
+            if (requestToBreakfastResult.IsError)
+            {
+                return Problem(requestToBreakfastResult.Errors);
+            }
+
+            var breakfast = requestToBreakfastResult.Value;
             ErrorOr<Created> createBreakfastResult = _breakfastService.CreateBreakfast(breakfast);
 
             return createBreakfastResult.Match(
@@ -58,16 +56,13 @@ namespace BuberBreakfastAPI.Controllers
         [HttpPut("{id:guid}")]
         public IActionResult UpsertBreakfast(Guid id, UpsertBreakfastRequest request)
         {
-            var breakfast = new Breakfast(
-                id,
-                request.Name,
-                request.Description,
-                request.StartDateTime,
-                request.EndDateTime,
-                DateTime.UtcNow,
-                request.Savory,
-                request.Sweet);
+            var requestToBreakfastResult = Breakfast.From(id, request);
 
+            if (requestToBreakfastResult.IsError)
+            {
+                return Problem(requestToBreakfastResult.Errors);
+            }
+            var breakfast = requestToBreakfastResult.Value;
             ErrorOr<UpsertedBreakfast> upsertedBreakfastResult = _breakfastService.UpsertBreakfast(breakfast);
 
             // TODO: return 201 if a new breakfast was created
