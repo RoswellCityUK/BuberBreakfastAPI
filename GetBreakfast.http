@@ -1,0 +1,4 @@
+@id=0b70c25c-332f-4462-a872-9f579fc5c031
+
+GET https://localhost:7233/breakfast/{{id}}
+Content-Type: application/json
