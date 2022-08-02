@@ -2,10 +2,6 @@
 
 ---
 
-# Tutorial
-
-- [YouTube Video](https://www.youtube.com/watch?v=PmDJIooZjBE)
-
 # Error Handling Library
 
 - [ErrorOr](https://github.com/amantinband/error-or) - A simple, fluent discriminated union of an error or a result.
